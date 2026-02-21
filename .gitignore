@@ -1,0 +1,11 @@
+# ModelSim generated files
+work/
+transcript
+*.wlf
+*.log
+modelsim.ini
+
+# Temporary files
+*.bak
+*.tmp
+*.swp
