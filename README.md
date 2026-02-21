@@ -19,7 +19,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 # 🧪 Laboratory Overview
 
-## Lab 01 – NAND Timing & Glitch Analysis
+## Lab 01 – NAND Gate Timing & Glitch Analysis
 
 <p align="center">
   <img src="images/glitch-measurement-setup.png" width="700">
@@ -30,7 +30,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 ## Lab 02 – 8-bit Adder & Add/Sub Architecture
 
 <p align="center">
-  <img src="images/addsub-architecture.png" width="700">
+  <img src="images/addsub-block-diagram.png" width="700">
 </p>
 
 ---
