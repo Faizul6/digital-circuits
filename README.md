@@ -2,8 +2,6 @@
 
 
 
-\# Digital Circuits (DI)
-
 
 
 This repository contains my laboratory work for the course \*\*Digital Circuits (DI)\*\* at HAW Hamburg.
@@ -18,7 +16,7 @@ The course focuses on practical digital design using VHDL, FPGA implementation, 
 
 
 
-\## 🔧 Technologies \& Tools
+## 🔧 Technologies \& Tools
 
 
 
@@ -36,11 +34,7 @@ The course focuses on practical digital design using VHDL, FPGA implementation, 
 
 
 
----
 
-
-
-\## 📁 Repository Structure
 
 
 
