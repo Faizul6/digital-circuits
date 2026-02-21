@@ -19,96 +19,47 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 # 🧪 Laboratory Overview
 
----
-
-## 🔹 Lab 01 – NAND Logic & Timing Analysis
-
-This lab focused on fundamental digital logic behavior using the 7400 NAND IC.
-
-Topics covered:
-- Static truth table verification
-- Rise and fall time measurement
-- Propagation delay
-- Glitch (hazard) analysis
-- Signal timing behavior
+## Lab 01 – NAND Timing & Glitch Analysis
 
 <p align="center">
-  <img src="images/lab01/glitch-measurement-setup.png" width="650">
+  <img src="images/glitch-measurement-setup.png" width="700">
 </p>
-
-This experiment introduced real-world timing effects and demonstrated how propagation delays influence digital systems.
 
 ---
 
-## 🔹 Lab 02 – 8-Bit Adder & Add/Sub Unit
-
-In this lab, an 8-bit ripple carry adder was designed and extended to an Add/Sub module including status flags:
-
-- Carry (C)
-- Overflow (V)
-- Negative (N)
-- Zero (Z)
-
-The design was synthesized and implemented on the MODSYS FPGA board.
+## Lab 02 – 8-bit Adder & Add/Sub Architecture
 
 <p align="center">
-  <img src="images/lab02/addsub-architecture.png" width="650">
+  <img src="images/addsub-architecture.png" width="700">
 </p>
-
-This lab strengthened understanding of structural VHDL, arithmetic logic units, and hardware mapping constraints.
 
 ---
 
-## 🔹 Lab 03 – 7-Segment Display & FSM
-
-This lab implemented a multi-digit 7-segment display system on the Basys 3 board.
-
-Topics included:
-- Segment encoding (0–9)
-- Common-anode configuration
-- Digit multiplexing
-- Finite State Machine (FSM) control
-- FPGA pin constraint mapping
+## Lab 03 – 7-Segment Display & FSM Control
 
 <p align="center">
-  <img src="images/lab03/7segment-pin-mapping.png" width="650">
+  <img src="images/7segment-pin-mapping.png" width="700">
 </p>
-
-This lab demonstrated the interaction between sequential logic, combinational logic, and real hardware peripherals.
 
 ---
 
-## 🔹 Lab 04 – DI-RISC Processor Architecture
-
-The final lab implemented a simplified **Register-Load-Store (RISC) architecture**.
-
-Features:
-- 16-bit data path
-- Program memory & data memory
-- Register file
-- ALU
-- Instruction decoder
-- Memory-mapped IO
+## Lab 04 – DI-RISC Processor Architecture
 
 <p align="center">
-  <img src="images/lab04/di-risc-architecture.png" width="650">
+  <img src="images/di-risc-architecture.png" width="700">
 </p>
-
-This project integrated all previous knowledge into a complete programmable processing unit implemented on FPGA.
 
 ---
 
 # 📈 Learning Outcomes
 
-Through these labs, I developed practical experience in:
-
-- Digital logic timing analysis
-- FPGA synthesis and implementation flow
-- Structural and behavioral VHDL design
-- Finite State Machine design
-- Arithmetic logic unit construction
-- Processor architecture fundamentals
-- Hardware/software interaction via memory-mapped IO
+- Understanding digital logic timing behavior
+- Measuring propagation delay and glitches
+- Designing arithmetic units in VHDL
+- Implementing FSM-based hardware control
+- FPGA synthesis and constraint mapping
+- Designing and integrating a simple RISC architecture
+- Memory-mapped IO and system-level hardware design
 
 ---
 
