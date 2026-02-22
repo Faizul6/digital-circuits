@@ -29,7 +29,7 @@ The objective was to investigate real timing effects in digital circuits and und
 ## 📷 Key Setup – Glitch Measurement
 
 <p align="center">
-  <img src="../images/lab01/glitch-measurement-setup.png" width="650">
+  <img src="../images/glitch-measurement-setup.png" width="650">
 </p>
 
 The glitch occurs due to unequal propagation delays in different signal paths, producing short transient pulses during switching.
@@ -39,7 +39,7 @@ The glitch occurs due to unequal propagation delays in different signal paths, p
 ## 📷 7400 NAND Pin Assignment
 
 <p align="center">
-  <img src="../images/lab01/7400-pin-assignment.png" width="500">
+  <img src="../images/7400-pin-assignment.png" width="500">
 </p>
 
 Correct pin alignment is critical to prevent permanent IC damage.
