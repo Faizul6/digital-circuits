@@ -26,7 +26,7 @@ The objective was to investigate real timing effects in digital circuits and und
 
 ---
 
-## 📷 7400 NAND Pin Assignment
+##  7400 NAND Pin Assignment
 
 <p align="center">
   <img src="../images/7400-pin-assignment.png" width="500">
@@ -36,7 +36,7 @@ Correct identification of pins (Vcc, GND, inputs and outputs) is essential befor
 
 ---
 
-## 📷 SSI Evaluation Board – Correct IC Alignment
+##  SSI Evaluation Board – Correct IC Alignment
 
 <p align="center">
   <img src="../images/pin-assignment-on-IC-evaluation-board.png" width="650">
@@ -46,7 +46,7 @@ The IC must be aligned with the socket marking. Incorrect placement can permanen
 
 ---
 
-## 📷 Signal Propagation Measurement Setup
+##  Signal Propagation Measurement Setup
 
 <p align="center">
   <img src="../images/signal-propagation-setup.png" width="650">
@@ -56,7 +56,7 @@ This setup was used to measure propagation delay through cascaded NAND gates.
 
 ---
 
-## 📷 Glitch Measurement Setup
+##  Glitch Measurement Setup
 
 <p align="center">
   <img src="../images/glitch-measurement-setup.png" width="650">
@@ -66,7 +66,7 @@ Unequal propagation delays in different signal paths cause short transient pulse
 
 ---
 
-## ⚙️ Core Concepts
+## Core Concepts
 
 - CMOS voltage levels
 - Propagation delay (t<sub>pd</sub>)
@@ -76,7 +76,7 @@ Unequal propagation delays in different signal paths cause short transient pulse
 
 ---
 
-## 🎯 Learning Outcome
+##  Outcome
 
 This lab demonstrated that digital systems are not ideal.  
 Signal transitions require finite time, and timing mismatches can introduce unintended behavior.
