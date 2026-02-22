@@ -39,7 +39,7 @@ Correct identification of pins (Vcc, GND, inputs and outputs) is essential befor
 ## 📷 SSI Evaluation Board – Correct IC Alignment
 
 <p align="center">
-  <img src="../images/pin-assignment-on-ic-evaluation-board.png" width="650">
+  <img src="../images/pin-assignment-on-IC-evaluation-board.png" width="650">
 </p>
 
 The IC must be aligned with the socket marking. Incorrect placement can permanently damage the device.
