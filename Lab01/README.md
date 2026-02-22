@@ -26,23 +26,43 @@ The objective was to investigate real timing effects in digital circuits and und
 
 ---
 
-## 📷 Key Setup – Glitch Measurement
-
-<p align="center">
-  <img src="../images/glitch-measurement-setup.png" width="650">
-</p>
-
-The glitch occurs due to unequal propagation delays in different signal paths, producing short transient pulses during switching.
-
----
-
 ## 📷 7400 NAND Pin Assignment
 
 <p align="center">
-  <img src="../images/7400-pin-assignment.png" width="500">
+  <img src="../images/lab01/7400-pin-assignment.png" width="500">
 </p>
 
-Correct pin alignment is critical to prevent permanent IC damage.
+Correct identification of pins (Vcc, GND, inputs and outputs) is essential before powering the IC.
+
+---
+
+## 📷 SSI Evaluation Board – Correct IC Alignment
+
+<p align="center">
+  <img src="../images/lab01/pin-assignment-on-ic-evaluation-board.png" width="650">
+</p>
+
+The IC must be aligned with the socket marking. Incorrect placement can permanently damage the device.
+
+---
+
+## 📷 Signal Propagation Measurement Setup
+
+<p align="center">
+  <img src="../images/lab01/signal-propagation-setup.png" width="650">
+</p>
+
+This setup was used to measure propagation delay through cascaded NAND gates.
+
+---
+
+## 📷 Glitch Measurement Setup
+
+<p align="center">
+  <img src="../images/lab01/glitch-measurement-setup.png" width="650">
+</p>
+
+Unequal propagation delays in different signal paths cause short transient pulses (glitches) during switching transitions.
 
 ---
 
@@ -52,13 +72,13 @@ Correct pin alignment is critical to prevent permanent IC damage.
 - Propagation delay (t<sub>pd</sub>)
 - Rise time (t<sub>r</sub>) and fall time (t<sub>f</sub>)
 - Static hazards (glitches)
-- Cascaded gate delay accumulation
+- Delay accumulation in cascaded logic
 
 ---
 
 ## 🎯 Learning Outcome
 
-This lab demonstrated that real digital systems are not ideal.  
-Signal transitions require finite time, and timing mismatches can create unintended behavior.
+This lab demonstrated that digital systems are not ideal.  
+Signal transitions require finite time, and timing mismatches can introduce unintended behavior.
 
-Understanding these effects is essential for reliable hardware design.
+Understanding propagation delay and hazard effects is fundamental for reliable hardware design.
