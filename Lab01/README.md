@@ -6,7 +6,7 @@ The objective was to investigate real timing effects in digital circuits and und
 
 ---
 
-## 🔧 Hardware Used
+##  Hardware Used
 
 - 7400 Series NAND IC
 - SSI Evaluation Board
@@ -16,7 +16,7 @@ The objective was to investigate real timing effects in digital circuits and und
 
 ---
 
-## 📌 Experiments Performed
+##  Experiments Performed
 
 - Verification of NAND truth table
 - Measurement of rise and fall times
