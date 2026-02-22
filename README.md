@@ -6,7 +6,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 ---
 
-## 🔧 Technologies & Tools
+##  Technologies & Tools
 
 - VHDL
 - Vivado Design Suite
@@ -17,7 +17,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 ---
 
-# 🧪 Laboratory Overview
+#  Laboratory Overview
 
 ## Lab 01 – NAND Gate Timing & Glitch Analysis
 
@@ -51,7 +51,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 ---
 
-# 📈 Learning Outcomes
+#  Learning Outcomes
 
 - Understanding digital logic timing behavior
 - Measuring propagation delay and glitches
@@ -63,7 +63,7 @@ The course focuses on practical digital system design using **VHDL**, FPGA imple
 
 ---
 
-# 👤 Author
+#  Author
 
 Robin Faizul Ahmed  
 B.Sc. Information Engineering  
