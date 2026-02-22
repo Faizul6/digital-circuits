@@ -29,7 +29,7 @@ The objective was to investigate real timing effects in digital circuits and und
 ## 📷 7400 NAND Pin Assignment
 
 <p align="center">
-  <img src="../images/lab01/7400-pin-assignment.png" width="500">
+  <img src="../images/7400-pin-assignment.png" width="500">
 </p>
 
 Correct identification of pins (Vcc, GND, inputs and outputs) is essential before powering the IC.
@@ -39,7 +39,7 @@ Correct identification of pins (Vcc, GND, inputs and outputs) is essential befor
 ## 📷 SSI Evaluation Board – Correct IC Alignment
 
 <p align="center">
-  <img src="../images/lab01/pin-assignment-on-ic-evaluation-board.png" width="650">
+  <img src="../images/pin-assignment-on-ic-evaluation-board.png" width="650">
 </p>
 
 The IC must be aligned with the socket marking. Incorrect placement can permanently damage the device.
@@ -49,7 +49,7 @@ The IC must be aligned with the socket marking. Incorrect placement can permanen
 ## 📷 Signal Propagation Measurement Setup
 
 <p align="center">
-  <img src="../images/lab01/signal-propagation-setup.png" width="650">
+  <img src="../images/signal-propagation-setup.png" width="650">
 </p>
 
 This setup was used to measure propagation delay through cascaded NAND gates.
@@ -59,7 +59,7 @@ This setup was used to measure propagation delay through cascaded NAND gates.
 ## 📷 Glitch Measurement Setup
 
 <p align="center">
-  <img src="../images/lab01/glitch-measurement-setup.png" width="650">
+  <img src="../images/glitch-measurement-setup.png" width="650">
 </p>
 
 Unequal propagation delays in different signal paths cause short transient pulses (glitches) during switching transitions.
