@@ -1,164 +1,144 @@
 Lab 02 – 8-Bit Adder/Subtractor & Status Flags
-
-This laboratory focused on extending an 8-bit ripple carry adder to perform both addition and subtraction using 2’s complement arithmetic.
-
+This laboratory focused on designing and extending an 8-bit ripple carry adder to perform both addition and subtraction using 2’s complement arithmetic.
 The objective was to implement arithmetic functionality in VHDL, generate processor-style status flags, and analyze timing behavior after FPGA implementation.
+________________
+
 
 Hardware Used
+* MODSYS 2.0 Evaluation Board (XC7A100T)
 
-MODSYS 2.0 Evaluation Board (XC7A100T)
+* Two IOM Extension Boards
 
-Two IOM Extension Boards
+* Vivado Design Suite
 
-Vivado Design Suite
+* Oscilloscope
 
-Oscilloscope (timing verification)
+________________
+
 
 Experiments Performed
+   * Implementation of 8-bit Ripple Carry Adder
 
-Implementation of 8-bit Ripple Carry Adder
+   * Extension to Adder/Subtractor (AddSub)
 
-Extension to Adder/Subtractor (AddSub)
+   * Implementation of status flags (C, V, N, Z)
 
-Implementation of status flags (C, V, N, Z)
+   * Behavioral simulation using testbench
 
-Behavioral simulation using testbench
+   * FPGA mapping using XDC constraints
 
-FPGA mapping using XDC constraints
+   * Timing analysis (Synthesis & Implementation)
 
-Timing analysis (Synthesis & Implementation)
+   * Hardware validation on MODSYS board
 
-Hardware validation on MODSYS board
+________________
+
 
 Ripple Carry Adder Architecture
 <p align="center"> <img src="../images/rca-block-diagram.png" width="650"> </p>
-
 The ripple carry adder performs:
+S = A + B + ci
+Where:
+      * A, B → 8-bit operands
 
-𝑆
-=
-𝐴
-+
-𝐵
-+
-𝑐
-𝑖
-S=A+B+c
-i
-	​
+      * ci → carry input
 
+      * S → 8-bit result
 
-The carry propagates sequentially from the least significant bit (LSB) to the most significant bit (MSB), directly influencing the overall propagation delay.
+      * co → carry output
+
+The carry propagates sequentially from the least significant bit (LSB) to the most significant bit (MSB).
+This directly affects the overall propagation delay of the circuit.
+________________
+
 
 FPGA Port Mapping – Adder
 <p align="center"> <img src="../images/port-mapping-fpga-adder.png" width="650"> </p>
+         * Switches → Operands A and B
 
-Switches → Operands A and B
+         * Button → Carry input (ci)
 
-Button → Carry input (c<sub>i</sub>)
-
-LEDs → Sum (S) and Carry output (c<sub>o</sub>)
+         * LEDs → Sum (S) and Carry output (co)
 
 Correct constraint mapping ensured proper FPGA hardware interaction.
+________________
+
 
 Adder/Subtractor Extension (Task 2)
-
 The adder was extended to support subtraction using 2’s complement arithmetic.
-
 Subtraction is achieved by:
+            * Inverting operand B
 
-Inverting operand B
+            * Setting carry input to 1
 
-Setting carry input to 1
+            * Using a multiplexer controlled by a select signal (sel)
 
-Using a multiplexer controlled by a select signal (sel)
+sel = 0  →  Addition
+sel = 1  →  Subtraction
+________________
 
-𝑠
-𝑒
-𝑙
-=
-0
-→
-𝐴
-𝑑
-𝑑
-𝑖
-𝑡
-𝑖
-𝑜
-𝑛
-sel=0→Addition
-𝑠
-𝑒
-𝑙
-=
-1
-→
-𝑆
-𝑢
-𝑏
-𝑡
-𝑟
-𝑎
-𝑐
-𝑡
-𝑖
-𝑜
-𝑛
-sel=1→Subtraction
+
 AddSub Block Diagram
 <p align="center"> <img src="../images/addsub-block-diagram.png" width="650"> </p>
-
 The multiplexer selects whether the circuit performs addition or subtraction before feeding the operands into the ripple carry adder.
+________________
+
 
 FPGA Port Mapping – AddSub
 <p align="center"> <img src="../images/port-mapping-fpga-addsub.png" width="650"> </p>
+               * Switches → Operands A and B
 
-Switches → Operands A and B
+               * Button → Select (sel)
 
-Button → Select (sel)
+               * LEDs → Result (S)
 
-LEDs → Result (S)
+               * Additional LEDs → Status flags (C, V, N, Z)
 
-Additional LEDs → Status flags (C, V, N, Z)
+________________
+
 
 Status Flags Implemented
-Flag	Description
-C	Carry flag (unsigned overflow)
-V	Overflow flag (signed overflow)
-N	Negative result indicator
-Z	Zero result indicator
+Flag
+	Description
+	C
+	Carry flag (unsigned overflow)
+	V
+	Overflow flag (signed overflow)
+	N
+	Negative result indicator
+	Z
+	Zero result indicator
+	These flags allow detection of arithmetic conditions similar to a processor ALU.
+________________
 
-These flags allow detection of arithmetic conditions similar to a processor ALU.
 
 Core Concepts
+                  * Ripple carry architecture
 
-Ripple carry architecture
+                  * 2’s complement subtraction
 
-2’s complement subtraction
+                  * Signed vs unsigned overflow
 
-Signed vs unsigned overflow
+                  * Status flag generation
 
-Status flag generation
+                  * FPGA constraint mapping (.xdc files)
 
-FPGA constraint mapping (.xdc)
+                  * Synthesis vs implementation timing analysis
 
-Synthesis vs implementation timing analysis
+                  * Propagation delay accumulation
 
-Propagation delay accumulation
+________________
+
 
 Outcome
-
 This lab demonstrated how arithmetic circuits can be extended from basic adders to functional ALU-like units.
-
 It showed how:
+                     * Subtraction can be implemented using 2’s complement
 
-Subtraction can be implemented using 2’s complement
+                     * Overflow detection differs for signed and unsigned operations
 
-Overflow detection differs for signed and unsigned operations
+                     * Status flags are essential in processor architectures
 
-Status flags are essential in processor architectures
-
-Timing behavior changes after FPGA implementation
+                     * Timing behavior changes after FPGA implementation
 
 Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
