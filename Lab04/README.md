@@ -294,7 +294,7 @@ Supporting modules:
 ---
 ## Report
 
-#A report was not mandatory for this laboratory. Instead questions were thoroughly asked.
+A report was not mandatory for this laboratory. Instead questions were thoroughly asked.
 
 ---
 ## Outcome
