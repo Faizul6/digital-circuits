@@ -306,7 +306,10 @@ Supporting modules:
 - `MODSYS2IOM.xdc`
 
 ---
+## Report
 
+A report was not mandatory for this laboratory. Instead questions were thoroughly asked.
+---
 ## Outcome
 
 This lab demonstrated how a programmable processor architecture can be implemented and validated on an FPGA platform.
