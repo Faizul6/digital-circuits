@@ -137,8 +137,3 @@ It showed how:
 - Overflow detection differs for signed and unsigned operations
 - Status flags are essential in processor architectures
 - Timing behavior changes after FPGA implementation
-
-Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
-=======
-Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
->>>>>>> d622a34ba9488ac6766d6dd70cda6a789797cf84
