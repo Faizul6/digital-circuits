@@ -1,141 +1,328 @@
-﻿# Lab 02 – 8-Bit Adder/Subtractor & Status Flags
+﻿# Lab 04 – DI-RISC Programmable Architecture
 
-This laboratory focused on designing and extending an 8-bit ripple carry adder to perform both addition and subtraction using 2’s complement arithmetic.
+This laboratory focused on implementing and validating a simple programmable processing unit (PU) based on a register-load-store RISC architecture.
 
-The objective was to implement arithmetic functionality in VHDL, generate processor-style status flags, and analyze timing behavior after FPGA implementation.
+The objective was to implement instruction decoding, address decoding, machine code execution and memory-mapped IO functionality for the DI-RISC processor.  
+The design was validated through behavioral simulation and FPGA implementation on the MODSYS 2.0 evaluation board.
 
 ---
 
 ## Hardware Used
 
-- MODSYS 2.0 Evaluation Board (XC7A100T)
-- Two IOM Extension Boards
+- HAW MODSYS 2.0 Evaluation Board (XC7A100T-CSG324-1)
+- IO-Module Extension Board
 - Vivado Design Suite
-- Oscilloscope
+- Single clock execution mode
+- On-board LEDs and Switches
 
 ---
 
-## Experiments Performed
-
-- Implementation of 8-bit Ripple Carry Adder
-- Extension to Adder/Subtractor (AddSub)
-- Implementation of status flags (C, V, N, Z)
-- Behavioral simulation using testbench
-- FPGA mapping using XDC constraints
-- Timing analysis (Synthesis & Implementation)
-- Hardware validation on MODSYS board
-
----
-
-## Ripple Carry Adder Architecture
+## Architecture Overview
 
 <p align="center">
-  <img src="../images/rca-block-diagram.png" width="650">
+  <img src="../images/di-risc-architecture.png" width="750">
 </p>
 
-The ripple carry adder performs:
+The DI-RISC processor follows a **register-load-store architecture** consisting of:
 
-S = A + B + ci
+- Program Counter (PC)
+- Program Memory (PMEM)
+- Data Memory (DMEM)
+- Register File (RF)
+- Arithmetic Logic Unit (ALU)
+- Control Unit (Instruction + Address Decoder)
+- Memory-mapped IO module
 
-Where:
-
-- A, B → 8-bit operands
-- ci → carry input
-- S → 8-bit result
-- co → carry output
-
-The carry propagates sequentially from the least significant bit (LSB) to the most significant bit (MSB).
-
-This directly affects the overall propagation delay of the circuit.
+The orange blocks represent control logic responsible for decoding instructions and generating control signals.
 
 ---
 
-## FPGA Port Mapping – Adder
+## Architectural Parameters
+
+- Data width: 16 bit  
+- Instruction width: 16 bit  
+- Data memory: 1024 × 16 bit  
+- Program memory: 512 × 16 bit  
+- Register file: 8 general-purpose registers (R0–R7)  
+
+The highest 16 addresses of DMEM are reserved for constant values.
+
+---
+
+## Instruction Format
 
 <p align="center">
-  <img src="../images/port-mapping-fpga-adder.png" width="650">
+  <img src="../images/di-risc-instruction-format.png" width="750">
 </p>
 
-- Switches → Operands A and B
-- Button → Carry input (ci)
-- LEDs → Sum (S) and Carry output (co)
+The DI-RISC architecture distinguishes four instruction types:
 
-Correct constraint mapping ensured proper FPGA hardware interaction.
+### REGREG
+```
+00 opcode - src1 src0 dst
+```
+
+### LOAD
+```
+10 address dst
+```
+
+### STORE
+```
+11 address src0
+```
+
+### BRANCH
+```
+01 offset cond
+```
+
+For this lab only unconditional branches were considered (cond = 0).
 
 ---
 
-## Adder/Subtractor Extension (Task 2)
-
-The adder was extended to support subtraction using 2’s complement arithmetic.
-
-Subtraction is achieved by:
-
-- Inverting operand B
-- Setting carry input to 1
-- Using a multiplexer controlled by a select signal (sel)
-
-sel = 0 → Addition  
-sel = 1 → Subtraction  
-
----
-
-## AddSub Block Diagram
+## Instruction Set Overview
 
 <p align="center">
-  <img src="../images/addsub-block-diagram.png" width="650">
+  <img src="../images/di-risc-instructruction-set.png" width="750">
 </p>
 
-The multiplexer selects whether the circuit performs addition or subtraction before feeding the operands into the ripple carry adder.
+Supported operations:
+
+- mov
+- add
+- sub
+- mul
+- and
+- or
+- xor
+- not
+- shl
+- shr
+- ld
+- st
+- b
+
+All arithmetic and logical operations are performed exclusively on register operands.
 
 ---
 
-## FPGA Port Mapping – AddSub
+## Address Map
 
 <p align="center">
-  <img src="../images/port-mapping-fpga-addsub.png" width="650">
+  <img src="../images/di-risc-address-map.png" width="750">
 </p>
 
-- Switches → Operands A and B
-- Button → Select (sel)
-- LEDs → Result (S)
-- Additional LEDs → Status flags (C, V, N, Z)
+The address space is divided into:
+
+- **DMEM** → address(10) = 0  
+- **IO Module** → address(10) = 1  
+
+IO Mapping:
+
+- LED0 (output)
+- LED1 (output)
+- SW0 (input)
+- SW1 (input)
+
+Access to peripherals is done via **memory-mapped IO** using load/store instructions.
+
+Write operations require:
+- `wren_s = 1`
+- Correct chip select signal (`cs_s`)
 
 ---
 
-## Status Flags Implemented
+# PART 1 – Core Unit Implementation
 
-| Flag | Description |
-|------|------------|
-| C | Carry flag (unsigned overflow) |
-| V | Overflow flag (signed overflow) |
-| N | Negative result indicator |
-| Z | Zero result indicator |
+Only the following files were modified:
 
-These flags allow detection of arithmetic conditions similar to a processor ALU.
+- `DIRISC_global.vhd`
+- `DIRISC_control_unit.vhd`
+- `DIRISC_pmem.vhd`
+
+All other architecture modules remained unchanged.
+
+---
+
+## Opcode Definition
+
+Implemented opcode constants in:
+
+- `DIRISC_global.vhd`
+
+These constants define ALU control behavior for REGREG instructions.
+
+---
+
+## Instruction Decoder
+
+Implemented inside:
+
+- `DIRISC_control_unit.vhd`
+
+Responsibilities:
+
+- Extract opcode
+- Extract src0, src1, dst
+- Generate ALU control signals
+- Enable register write
+- Handle load/store selection
+- Control program counter update
+
+---
+
+## Machine Code Extension
+
+Modified:
+
+- `DIRISC_pmem.vhd`
+
+Extended example program with additional REGREG instructions.
+
+Initial register values:
+
+- R0 = 56
+- R1 = 1
+- R2 = 7
+
+The additional instructions ensured visible register updates for simulation validation.
+
+---
+
+## Behavioral Simulation
+
+Steps performed:
+
+1. Created new RTL project in Vivado  
+2. Added all DI-RISC source files  
+3. Set:
+   - `DIRISC_top` as Top Module
+   - `DIRISC_tb` as Simulation Source  
+4. Executed Behavioral Simulation  
+5. Loaded waveform configuration `DIRISC_behav.wcfg`
+
+Validated:
+
+- Register value updates
+- ALU operation correctness
+- PC increment behavior
+- Branch functionality
+
+---
+
+# PART 2 – IO Integration
+
+## Address Decoder Extension
+
+Extended the address decoder logic in:
+
+- `DIRISC_control_unit.vhd`
+
+Functionality:
+
+- Distinguish DMEM and IO via address(10)
+- Generate chip select signals
+- Control write enable (`wren_s`)
+
+---
+
+## IO Machine Code Example
+
+Implemented program that:
+
+1. Loads switch value (SW0)
+2. Performs logical left shift
+3. Stores result to LED0
+
+This demonstrated correct memory-mapped IO operation.
+
+---
+
+## FPGA Implementation
+
+<p align="center">
+  <img src="../images/exercise-setup.png" width="750">
+</p>
+
+Procedure:
+
+- Ran full implementation flow
+- Generated bitstream
+- Programmed MODSYS board
+- Set clock mode to **single execution**
+- Verified LED behavior via switches
+
+---
+
+## Timing Analysis
+
+Performed:
+
+- Open Implemented Design
+- Report Timing Analysis
+
+Inspected:
+
+- Critical path delay
+- Worst Negative Slack (WNS)
+- Setup and hold timing
+
+Results were reflected in the final discussion.
 
 ---
 
 ## Core Concepts
 
-- Ripple carry architecture
-- 2’s complement subtraction
-- Signed vs unsigned overflow
-- Status flag generation
-- FPGA constraint mapping (.xdc files)
-- Synthesis vs implementation timing analysis
-- Propagation delay accumulation
+- Register-Load-Store Architecture
+- Instruction decoding
+- Address decoding
+- Memory-mapped IO
+- ALU control logic
+- Program counter operation
+- Behavioral simulation
+- FPGA implementation flow
+- Timing closure and critical path analysis
+
+---
+
+## Design Files
+
+Core files:
+
+- `DIRISC_global.vhd`
+- `DIRISC_control_unit.vhd`
+- `DIRISC_pmem.vhd`
+
+Supporting modules:
+
+- `DIRISC_ALU.vhd`
+- `DIRISC_RF.vhd`
+- `DIRISC_dmem.vhd`
+- `DIRISC_IO.vhd`
+- `DIRISC_top.vhd`
+- `DIRISC_tb.vhd`
+- `DIRISC_behav.wcfg`
+- `MODSYS2IOM.xdc`
+
+---
+## Report
+
+No lab report was needed for this lab.
 
 ---
 
 ## Outcome
 
-This lab demonstrated how arithmetic circuits can be extended from basic adders to functional ALU-like units.
+This lab demonstrated how a programmable processor architecture can be implemented and validated on an FPGA platform.
 
-It showed how:
+Key insights:
 
-- Subtraction can be implemented using 2’s complement
-- Overflow detection differs for signed and unsigned operations
-- Status flags are essential in processor architectures
-- Timing behavior changes after FPGA implementation
+- Machine code is translated into control signals by the instruction decoder
+- ALU behavior is fully controlled by opcode encoding
+- IO peripherals can be accessed via memory-mapped addressing
+- Behavioral simulation validates logical correctness
+- FPGA implementation validates physical hardware execution
+- Timing analysis ensures reliable processor operation
 
-Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
+Understanding programmable architectures and control logic is fundamental for digital system design and embedded processor development.
