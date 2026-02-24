@@ -272,20 +272,6 @@ Results were reflected in the final discussion.
 
 ---
 
-## Core Concepts
-
-- Register-Load-Store Architecture
-- Instruction decoding
-- Address decoding
-- Memory-mapped IO
-- ALU control logic
-- Program counter operation
-- Behavioral simulation
-- FPGA implementation flow
-- Timing closure and critical path analysis
-
----
-
 ## Design Files
 
 Core files:
@@ -308,7 +294,8 @@ Supporting modules:
 ---
 ## Report
 
-A report was not mandatory for this laboratory. Instead questions were thoroughly asked.
+#A report was not mandatory for this laboratory. Instead questions were thoroughly asked.
+
 ---
 ## Outcome
 
