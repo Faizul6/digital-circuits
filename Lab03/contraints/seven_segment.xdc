@@ -4,9 +4,9 @@
 ##			Exercise 3
 ##
 ## @name:   seven_segment.xdc
-## @author: 
-## description: basys 3 constraint file for Exercise 3
-## 				no modifications necessary
+## @author: Faizul Ahmed Robin
+## description: basys 3 constraint file
+## 				
 ##
 ## (c) 2025 HAW Hamburg
 ##
