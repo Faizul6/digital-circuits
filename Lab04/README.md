@@ -306,11 +306,6 @@ Supporting modules:
 - `MODSYS2IOM.xdc`
 
 ---
-## Report
-
-No lab report was needed for this lab.
-
----
 
 ## Outcome
 
