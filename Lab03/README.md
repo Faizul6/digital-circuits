@@ -152,20 +152,6 @@ Reflect timing results in the lab report.
 
 ---
 
-## Core Concepts
-
-- 7-segment digit encoding
-- Common anode, low-active logic
-- One-hot multiplexing
-- Finite State Machines (Mealy & Moore)
-- Register-based synchronization
-- Counter design in VHDL
-- Subvector extraction
-- Synthesis vs implementation timing
-- Critical path analysis
-
----
-
 ## Design File
 
 Main VHDL source:
