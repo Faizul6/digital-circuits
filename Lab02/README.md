@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿# Lab 02 – 8-Bit Adder/Subtractor & Status Flags
+=======
+# Lab 02 – 8-Bit Adder/Subtractor & Status Flags
+>>>>>>> d622a34ba9488ac6766d6dd70cda6a789797cf84
 
 This laboratory focused on designing and extending an 8-bit ripple carry adder to perform both addition and subtraction using 2’s complement arithmetic.
 
@@ -138,4 +142,8 @@ It showed how:
 - Status flags are essential in processor architectures
 - Timing behavior changes after FPGA implementation
 
+<<<<<<< HEAD
 Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
+=======
+Understanding arithmetic logic design and timing analysis is fundamental for reliable digital system development.
+>>>>>>> d622a34ba9488ac6766d6dd70cda6a789797cf84
